@@ -1,25 +1,41 @@
 package se.su.ovning2;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.SortedSet;
+import java.util.stream.Collectors;
 
 public class Searcher implements SearchOperations {
+    private final Set<String> artistSet = new HashSet<>();
+    private final Set<String> titleSet = new HashSet<>();
+    private final Set<String> genreSet = new HashSet<>();
+
 
   public Searcher(Collection<Recording> data) {
+      Set<Recording> recordingSet = new HashSet<>(data);
+      for (Recording r : recordingSet) {
+        artistSet.add(r.getArtist());
+      }
+      for (Recording r : recordingSet) {
+        titleSet.add(r.getTitle());
+      }
+      for (Recording r : recordingSet){
+        genreSet.addAll(r.getGenre());
+      }
 
-    Collection<Recording> recordings = data;
   }
 
   @Override
   public long numberOfArtists() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'numberOfArtists'");
+    return artistSet.size();
+    //throw new UnsupportedOperationException("Unimplemented method 'numberOfArtists'");
   }
 
   @Override
   public long numberOfGenres() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'numberOfGenres'");
+    return genreSet.size();
+    //throw new UnsupportedOperationException("Unimplemented method 'numberOfGenres'");
   }
 
   @Override
