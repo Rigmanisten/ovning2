@@ -1,16 +1,13 @@
 package se.su.ovning2;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.SortedSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Searcher implements SearchOperations {
     private final Set<String> artistSet = new HashSet<>();
     private final Set<String> titleSet = new HashSet<>();
     private final Set<String> genreSet = new HashSet<>();
-
+    private final Set<String> sortedtitleSet = new TreeSet<>();
 
   public Searcher(Collection<Recording> data) {
       Set<Recording> recordingSet = new HashSet<>(data);
@@ -23,7 +20,9 @@ public class Searcher implements SearchOperations {
       for (Recording r : recordingSet){
         genreSet.addAll(r.getGenre());
       }
-
+      for (Recording r : recordingSet){
+        sortedtitleSet.add(r.getTitle());
+      }
   }
 
   @Override
@@ -40,26 +39,26 @@ public class Searcher implements SearchOperations {
 
   @Override
   public long numberOfTitles() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'numberOfTitles'");
+    return titleSet.size();
+    //throw new UnsupportedOperationException("Unimplemented method 'numberOfTitles'");
   }
 
   @Override
-  public boolean doesArtistExist(String name) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'doesArtistExist'");
+  public boolean doesArtistExist(String name){
+    return artistSet.contains(name);
+    //throw new UnsupportedOperationException("Unimplemented method 'doesArtistExist'");
   }
 
   @Override
   public Collection<String> getGenres() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getGenres'");
+    return genreSet;
+    //throw new UnsupportedOperationException("Unimplemented method 'getGenres'");
   }
 
   @Override
   public Recording getRecordingByName(String title) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getRecordingByName'");
+    return (Recording) sortedtitleSet;
+    //throw new UnsupportedOperationException("Unimplemented method 'getRecordingByName'");
   }
 
   @Override
