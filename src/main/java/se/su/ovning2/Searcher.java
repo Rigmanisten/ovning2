@@ -9,6 +9,7 @@ public class Searcher implements SearchOperations {
     private final Set<String> genreSet = new HashSet<>();
 
     private final Map<String, Recording> titleToRecordings = new HashMap<>();
+    private final NavigableMap<Integer, Set<Recording>> recordingsByYear = new TreeMap<>();
 
 
   public Searcher(Collection<Recording> data) {
@@ -19,6 +20,7 @@ public class Searcher implements SearchOperations {
         genreSet.addAll(r.getGenre());
 
         titleToRecordings.put(r.getTitle(), r);
+        recordingsByYear.computeIfAbsent(r.getYear(), y -> new HashSet<>()).add(r);
       }
   }
 
@@ -60,8 +62,12 @@ public class Searcher implements SearchOperations {
 
   @Override
   public Collection<Recording> getRecordingsAfter(int year) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getRecordingsAfter'");
+    Collection<Recording> result = new HashSet<>();
+    for (Set<Recording> recordings : recordingsByYear.tailMap(year, true).values()) {
+        result.addAll(recordings);
+    }
+    return Collections.unmodifiableCollection(result);
+    //throw new UnsupportedOperationException("Unimplemented method 'getRecordingsAfter'");
   }
 
   @Override
