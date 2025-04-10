@@ -7,21 +7,18 @@ public class Searcher implements SearchOperations {
     private final Set<String> artistSet = new HashSet<>();
     private final Set<String> titleSet = new HashSet<>();
     private final Set<String> genreSet = new HashSet<>();
-    private final Set<String> sortedtitleSet = new TreeSet<>();
+
+    private final Map<String, Recording> titleToRecordings = new HashMap<>();
+
 
   public Searcher(Collection<Recording> data) {
       Set<Recording> recordingSet = new HashSet<>(data);
       for (Recording r : recordingSet) {
         artistSet.add(r.getArtist());
-      }
-      for (Recording r : recordingSet) {
         titleSet.add(r.getTitle());
-      }
-      for (Recording r : recordingSet){
         genreSet.addAll(r.getGenre());
-      }
-      for (Recording r : recordingSet){
-        sortedtitleSet.add(r.getTitle());
+
+        titleToRecordings.put(r.getTitle(), r);
       }
   }
 
@@ -57,7 +54,7 @@ public class Searcher implements SearchOperations {
 
   @Override
   public Recording getRecordingByName(String title) {
-    return (Recording) sortedtitleSet;
+      return titleToRecordings.get(title);
     //throw new UnsupportedOperationException("Unimplemented method 'getRecordingByName'");
   }
 
