@@ -85,37 +85,51 @@ public class Exercise2 {
     } else {
       System.out.println(recordingsAfter.toString());
     }
-    /*
+
     SortedSet<Recording> recordingsByArtistOrderedByYearAsc =
         sut.getRecordingsByArtistOrderedByYearAsc(EXISTING_ARTIST);
     if (recordingsByArtistOrderedByYearAsc.size() != NUMBER_OF_RECORDINGS_BY_COLTRANE) {
       throw new AssertionError(
           "getRecordingsByArtistOrderedByYearAsc: wrong number of recordings.");
     }
+    else {
+      System.out.println(recordingsByArtistOrderedByYearAsc.toString());
+    }
+
 
     Collection<Recording> recordingsByGenre = sut.getRecordingsByGenre(EXISTING_GENRE);
     if (recordingsByGenre.size() != NUMBER_OF_JAZZ_RECORDINGS) {
       throw new AssertionError("getRecordingsByGenre: wrong number of recordings.");
+    } else {
+      System.out.println(recordingsByGenre.toString());
     }
+
 
     Collection<Recording> recordingsByGenreAndYear =
         sut.getRecordingsByGenreAndYear(EXISTING_GENRE, 1960, 1970);
     if (recordingsByGenreAndYear.size() != NUMBER_OF_JAZZ_RECORDINGS_BETWEEN_1960_AND_1970) {
       throw new AssertionError("getRecordingsByGenreAndYear: wrong number of recordings.");
     }
-
+    else {
+      System.out.println("test"+ recordingsByGenreAndYear.toString());
+    }
+    /*
     Collection<Recording> newRecordings = sut.offerHasNewRecordings(OFFERED_RECORDINGS);
     if (newRecordings.size() != NUMBER_OF_NEW_RECORDINGS_IN_OFFER) {
       throw new AssertionError("offerHasNewRecordings: wrong number of recordings.");
-    }
+    }*/
 
     Collection<Recording> optionalGetRecordingsBefore = sut.optionalGetRecordingsBefore(1960);
     if (optionalGetRecordingsBefore != null) {
       if (optionalGetRecordingsBefore.size() != NUMBER_OF_RECORDINGS_BEFORE_1960) {
         throw new AssertionError("optionalGetRecordingsBefore: wrong number of recordings.");
       }
-    }
+      else {
+        System.out.println(optionalGetRecordingsBefore.toString());
 
+      }
+    }
+    /*
     SortedSet<Recording> optionalGetRecordingsByArtistOrderedByTitleAsc =
         sut.optionalGetRecordingsByArtistOrderedByTitleAsc(EXISTING_ARTIST);
     if (optionalGetRecordingsByArtistOrderedByTitleAsc != null) {
@@ -125,14 +139,15 @@ public class Exercise2 {
             "optionalGetRecordingsByArtistOrderedByTitleAsc: wrong number of recordings.");
       }
     }
-
+*/
     Collection<Recording> optionalGetRecordingsFrom = sut.optionalGetRecordingsFrom(1972);
     if (optionalGetRecordingsFrom != null) {
       if (optionalGetRecordingsFrom.size() != NUMBER_OF_RECORDINGS_FROM_1972) {
         throw new AssertionError("optionalGetRecordingsFrom: wrong number of recordings.");
       }
+      else {
+        System.out.println(optionalGetRecordingsFrom.toString());
+      }
     }
-
-     */
   }
 }

@@ -123,9 +123,7 @@ interface SearchOperations {
    * @param year året som sökningen löper till (och exkluderar)
    * @return ett omodifierbar samling med inspelningar
    */
-  default Collection<Recording> optionalGetRecordingsBefore(int year) {
-    return null;
-  }
+  Collection<Recording> optionalGetRecordingsBefore(int year);
 
   /**
    * Hämtar en omodifierbar samling med inspelningar av den sökta artisten. Samlingen ska vara
@@ -149,7 +147,6 @@ interface SearchOperations {
    * @param year det sökta året
    * @return en omodifierbar samling med inspelningar
    */
-  default Collection<Recording> optionalGetRecordingsFrom(int year) {
-    return null;
-  }
+  Collection<Recording> optionalGetRecordingsFrom(int year);
+
 }
