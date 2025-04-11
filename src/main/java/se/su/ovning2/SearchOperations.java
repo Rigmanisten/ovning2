@@ -135,9 +135,7 @@ interface SearchOperations {
    * @param artist den sökta artisten
    * @return ett omodifierbar samling med inspelningar sorterade på titel
    */
-  default SortedSet<Recording> optionalGetRecordingsByArtistOrderedByTitleAsc(String artist) {
-    return null;
-  }
+  SortedSet<Recording> optionalGetRecordingsByArtistOrderedByTitleAsc(String artist);
 
   /**
    * Hämtar en omodifierbar samling med inspelningar från det angivna året.
