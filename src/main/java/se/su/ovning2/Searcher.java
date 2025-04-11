@@ -15,7 +15,7 @@ public class Searcher implements SearchOperations {
 
 
   public Searcher(Collection<Recording> data) {
-      Set<Recording> recordingSet = new HashSet<>(data);
+    Set<Recording> recordingSet = new HashSet<>(data);
       for (Recording r : recordingSet) {
         artistSet.add(r.getArtist());
         titleSet.add(r.getTitle());
@@ -24,13 +24,13 @@ public class Searcher implements SearchOperations {
         titleToRecordings.put(r.getTitle(), r);
         for (String g : r.getGenre()) {
           genreToRecordings
-                  .computeIfAbsent(g, x -> new HashSet<>())
-                  .add(r);
+            .computeIfAbsent(g, x -> new HashSet<>())
+              .add(r);
         }
         recordingsByYear.computeIfAbsent(r.getYear(), y -> new HashSet<>()).add(r);
         recordingsByArtistByYearAsc
-                  .computeIfAbsent(r.getArtist(), a -> new TreeSet<>(Comparator.comparingInt(Recording::getYear)))
-                  .add(r);
+          .computeIfAbsent(r.getArtist(), a -> new TreeSet<>(Comparator.comparingInt(Recording::getYear)))
+            .add(r);
 
       }
   }
@@ -65,7 +65,7 @@ public class Searcher implements SearchOperations {
   @Override
   public SortedSet<Recording> getRecordingsByArtistOrderedByYearAsc(String artist) {
     return Collections.unmodifiableSortedSet(recordingsByArtistByYearAsc
-            .getOrDefault(artist, new TreeSet<>(Comparator.comparingInt(Recording::getYear))));
+      .getOrDefault(artist, new TreeSet<>(Comparator.comparingInt(Recording::getYear))));
   }
 
   @Override
