@@ -92,6 +92,8 @@ public class Searcher implements SearchOperations {
   public Collection<Recording> offerHasNewRecordings(Collection<Recording> offered) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'offerHasNewRecordings'");
+
+    //hej hej jag kan pusha
   }
 
   @Override
