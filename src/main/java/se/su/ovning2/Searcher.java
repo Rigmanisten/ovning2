@@ -1,7 +1,5 @@
 package se.su.ovning2;
-
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Searcher implements SearchOperations {
     private final Set<String> artistSet = new HashSet<>();

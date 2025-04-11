@@ -47,8 +47,7 @@ public class Recording {
  @Override
   public boolean equals(Object obj){
     if(this == obj) return true;
-    if(!(obj instanceof Recording)) return false;
-    Recording rec = (Recording) obj;
+    if(!(obj instanceof Recording rec)) return false;
     return year == rec.year &&
     artist.equals(rec.artist) &&
     title.equals(rec.title);
